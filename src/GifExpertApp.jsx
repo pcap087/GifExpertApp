@@ -5,6 +5,14 @@ export const GifExpertApp = () => {
 
     const [ categories, setCategories ] = useState(['One Punch', 'Two Punch'])
 
+    const onCategory = ( newCategory ) => {
+        if (categories.includes(newCategory)){
+            return;
+        } else {
+            setCategories([newCategory, ...categories]);
+        }
+    }
+
     return (
         <>
             {/* Titulo */}
@@ -12,7 +20,8 @@ export const GifExpertApp = () => {
 
             {/* Input */}
             <AddCategory 
-                setCategories = {setCategories}
+                onCategory = { (value) => onCategory(value) } 
+                //setCategories = {setCategories} 
             />
 
             <ol>
@@ -24,3 +33,9 @@ export const GifExpertApp = () => {
         </>
     )
 }
+
+ //otro forma de hacer
+// const onCategory = ( newCategory ) => {
+//     if (categories.includes(newCategory)) return;
+//     setCategories([newCategory, ...categories]);
+// }
